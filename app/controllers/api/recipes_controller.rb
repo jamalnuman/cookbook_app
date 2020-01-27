@@ -1,9 +1,27 @@
 class Api::RecipesController < ApplicationController
  
- def index 
-  @recipes = Recipe.all 
+#  def index 
+#   @recipes = Recipe.where("ingredients iLIKE ?", "%egg%")
+#   render 'index.json.jb'
+# end
+#  def index
+#   search_term = params[:search]#making the search param dynamic
+#   @recipes = Recipe.where("ingredients iLIKE ?", "%#{ search_term }%")#making the search param dynamic
+#   render 'index.json.jb'
+# end
+
+def index
+  search_term = params[:search]#making the search param dynamic
+  @recipes = Recipe.all
+  
+  if search_term
+    @recipes = Recipe.where("title iLIKE ? OR ingredients iLIKE ?", "%#{ search_term }%", "%#{ search_term }%")#making the search param dynamic
+  end
+
+  @recipes = @recipes.order(id: :asc)
   render 'index.json.jb'
 end
+
 
 def show
   @recipe = Recipe.find(params[:id])
