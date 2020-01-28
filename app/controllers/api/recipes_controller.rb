@@ -24,8 +24,8 @@ end
 
 
 def show
-  @recipe = Recipe.find(params[:id])
-  render 'show.json.jb'
+    @recipe = Recipe.find(params[:id])
+    render 'show.json.jb'
 end
 
 def update
@@ -43,10 +43,10 @@ def update
 
 end
 
-def create  
+def create 
   @recipe = Recipe.new(
+                        user_id: current_user.id,
                         title: params[:title],
-                        chef: params[:chef],
                         ingredients: params[:ingredients], 
                         directions: params[:directions], 
                         prep_time: params[:prep_time]
