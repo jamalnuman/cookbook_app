@@ -5,9 +5,9 @@ class Recipe < ApplicationRecord
     ingredients.split(", ")
   end
 
-  # def directions_list 
-  #   directions.split(", ")
-  # end
+  def directions_list 
+    directions.split(", ")
+  end
 
   def friendly_created_at
     created_at.strftime("%b %d, %Y")
