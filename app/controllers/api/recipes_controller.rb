@@ -32,7 +32,7 @@ def update
   @recipe = Recipe.find(params[:id])
 
   @recipe.title = params[:title] || @recipe.title #these are here in case the key and attribute for title is not entered 
-  @recipe.chef = params[:chef] || @recipe.chef
+  #@recipe.chef = params[:chef] || @recipe.chef
   @recipe.ingredients = params[:ingredients] || @recipe.ingredients
   @recipe.directions = params[:directions] || @recipe.directions
   @recipe.prep_time = params[:prep_time] || @recipe.prep_time
